@@ -1,0 +1,15 @@
+{% extends 'theme.html' %}
+
+{% block main %}
+
+
+<div class="container mt-5">
+    <div class="card p-4 shadow">
+        <h2>Buy Now - {{ product.name }}</h2>
+        <p><strong>Quantity:</strong> {{ quantity }}</p>
+        <p><strong>Price per item:</strong> ₹{{ product.price }}</p>
+        <p><strong>Total:</strong> ₹{{ total }}</p>
+        <button class="btn btn-success">Proceed to Payment</button>
+    </div>
+</div>
+{%endblock%}

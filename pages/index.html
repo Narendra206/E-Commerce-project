@@ -1,0 +1,57 @@
+{%extends 'theme.html'%}
+
+{%block main%}
+        <div class="container">
+            <div class="row mt-5">
+                <!--categories list coloumns-->
+                <div class="col-lg-3">
+                    <div class="list-group border shadow">
+                        <a href="/" 
+                        class="m-2">
+                        <button class="btn btn-outline-dark" style="width:15rem;">
+                            All products
+                        </button>
+                           
+                        </a>
+                        {%for j in categories%}
+                        <a href="/?category={{j.id}}" 
+                        class=m-2>
+                        <button class="btn btn-outline-dark" style="width:15rem;" >
+                            {{j.name}}
+                        </button>
+                           
+                        </a>
+                        {%endfor%}
+
+                    </div>
+                </div>
+
+                <!-- products columns -->
+                    <div class="col-lg-9">
+                        <div class="row">
+                            {% for i in products %}
+                            <div class="col-lg-4">
+                                <div class="card mb-5 shadow" style="width:20rem; height: 27rem;">
+                                    <div class="card-header">
+                                        <img src="{{ i.image.url }}" class="img-fluid">
+                                    </div>
+
+                                    <div class="card-body">
+                                        <h3>{{ i.name }}</h3>
+                                        <h6>Price: ₹{{ i.price }}</h6>
+                                        <h6>Description: {{ i.desc }}</h6>
+                                    </div>
+
+                                    <div class="card-footer text-center">
+                                        <a href="{% url 'add_to_cart' i.id %}" class="btn btn-outline-dark" style="width: 10rem;">
+                                            Add to Cart
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+
+{%endblock%}
